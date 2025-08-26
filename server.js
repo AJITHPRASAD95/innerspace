@@ -19,12 +19,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/innerspace', {
+// Connect to MongoDB Atlas
+const mongoUri = 'mongodb+srv://ajithtest95:ajith%40123@cluster0.n3qvh.mongodb.net/innerspace?retryWrites=true&w=majority';
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB connected...'))
+.then(() => console.log('MongoDB Atlas connected...'))
 .catch(err => console.log(err));
 
 // Admin Login Route
